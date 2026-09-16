@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Dashboard & Live Clock</title>
+  <meta name="description" content="Personal profile dashboard featuring live clock, dynamic time-of-day theme, dynamic greeting, and customizable name settings.">
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="ambient-background">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <div class="app-container">
+    <!-- Header Controls -->
+    <header class="top-nav">
+      <div class="brand">
+        <i class="fa-solid fa-compass-drafting brand-icon"></i>
+        <span>My Dashboard</span>
+      </div>
+      <div class="nav-actions">
+        <button id="format-toggle" class="icon-btn" title="Toggle 12h/24h Format">
+          <span class="btn-text">24H</span>
+        </button>
+        <button id="theme-toggle" class="icon-btn" title="Toggle Light/Dark Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Layout -->
+    <main class="dashboard-grid">
+      <!-- Profile & Greeting Card -->
+      <section class="card profile-card glass-card">
+        <div class="card-badge">
+          <span class="pulse-dot"></span>
+          <span id="time-badge-text">LIVE TIME</span>
+        </div>
+        
+        <div class="profile-header">
+          <div class="avatar-container">
+            <div class="avatar-glow"></div>
+            <img id="user-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80" alt="Profile Picture" class="avatar-img">
+            <button id="change-avatar-btn" class="avatar-edit-badge" title="Change Avatar Photo">
+              <i class="fa-solid fa-camera"></i>
+            </button>
+          </div>
+
+          <div class="profile-title-area">
+            <h3 id="greeting-text" class="greeting">Good Evening,</h3>
+            
+            <div class="name-edit-wrapper">
+              <h1 id="display-name" class="user-name" title="Click to edit name">Alex Morgan</h1>
+              <button id="edit-name-btn" class="edit-icon-btn" title="Edit Name">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+            </div>
+            
+            <p id="user-tagline" class="user-tagline" contenteditable="true" spellcheck="false" title="Click to edit headline">
+              Creative Developer & Product Designer
+            </p>
+          </div>
+        </div>
+
+        <div class="status-tags">
+          <span class="tag"><i class="fa-solid fa-location-dot"></i> <span id="user-location">Tokyo / Local Time</span></span>
+          <span class="tag tag-status"><i class="fa-solid fa-circle-check"></i> Available for projects</span>
+        </div>
+
+        <!-- Bio snippet -->
+        <p class="bio-text" id="user-bio" contenteditable="true" spellcheck="false">
+          Welcome to my personal dynamic space. Powered by real-time tickers and dynamic themes tailored to your local environment.
+        </p>
+
+        <!-- Social Links -->
+        <div class="social-links">
+          <a href="#" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="#" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" class="social-btn" title="Twitter / X"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" class="social-btn" title="Email Contact"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </section>
+
+      <!-- Main Clock Card -->
+      <section class="card clock-card glass-card">
+        <div class="clock-card-header">
+          <div class="card-title">
+            <i class="fa-regular fa-clock"></i> Local Real-Time Ticker
+          </div>
+          <div class="timezone-badge" id="timezone-name">GMT+8</div>
+        </div>
+
+        <!-- Big Digital Clock -->
+        <div class="digital-clock-container">
+          <div class="digital-clock">
+            <span id="clock-hours" class="time-part">20</span>
+            <span class="colon">:</span>
+            <span id="clock-minutes" class="time-part">17</span>
+            <span class="colon">:</span>
+            <span id="clock-seconds" class="time-part seconds">09</span>
+            <span id="clock-ampm" class="ampm-text">PM</span>
+          </div>
+        </div>
+
+        <!-- Detailed Date Display -->
+        <div class="date-display">
+          <div class="day-name" id="date-day">Wednesday</div>
+          <div class="full-date" id="date-full">September 16, 2026</div>
+        </div>
+
+        <!-- Dual Display: Analog Clock Widget -->
+        <div class="analog-clock-wrapper">
+          <div class="analog-clock">
+            <div class="clock-face">
+              <div class="hand hour-hand" id="analog-hour"></div>
+              <div class="hand minute-hand" id="analog-minute"></div>
+              <div class="hand second-hand" id="analog-second"></div>
+              <div class="center-cap"></div>
+              <!-- Clock Markings -->
+              <span class="marker m12">12</span>
+              <span class="marker m3">3</span>
+              <span class="marker m6">6</span>
+              <span class="marker m9">9</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- World Clocks Side Widget -->
+      <section class="card world-clocks-card glass-card">
+        <div class="card-header">
+          <h3><i class="fa-solid fa-globe"></i> World Clocks</h3>
+        </div>
+        <div class="world-clock-list" id="world-clock-list">
+          <!-- Populated dynamically by app.js -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>Designed with dynamic glassmorphic aesthetics &bull; Live Time Sync Enabled</p>
+    </footer>
+  </div>
+
+  <!-- Name Edit Modal -->
+  <div id="name-modal" class="modal-overlay">
+    <div class="modal-content glass-card">
+      <h3>Update Profile Name</h3>
+      <div class="input-group">
+        <label for="name-input">Your Full Name:</label>
+        <input type="text" id="name-input" placeholder="e.g. Alex Morgan" autocomplete="off">
+      </div>
+      <div class="modal-actions">
+        <button id="save-name-btn" class="primary-btn">Save Name</button>
+        <button id="cancel-name-btn" class="secondary-btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
