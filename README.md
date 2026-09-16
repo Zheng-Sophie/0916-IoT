@@ -3,6 +3,7 @@
 
 **Date:** September 16, 2026  
 **Repository:** [https://github.com/Zheng-Sophie/0916-IoT.git](https://github.com/Zheng-Sophie/0916-IoT.git)  
+**🌐 Live Demo:** [https://zheng-sophie.github.io/0916-IoT/](https://zheng-sophie.github.io/0916-IoT/)  
 **Author:** Zheng-Sophie  
 
 ---
