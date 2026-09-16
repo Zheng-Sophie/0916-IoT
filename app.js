@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // State variables
   let is24HourFormat = true;
   let currentTheme = localStorage.getItem('theme') || 'dark';
-  
+
   // Element references
   const clockHours = document.getElementById('clock-hours');
   const clockMinutes = document.getElementById('clock-minutes');
@@ -14,12 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const dateFull = document.getElementById('date-full');
   const timezoneName = document.getElementById('timezone-name');
   const greetingText = document.getElementById('greeting-text');
-  
+
   // Analog Hands
   const analogHour = document.getElementById('analog-hour');
   const analogMinute = document.getElementById('analog-minute');
   const analogSecond = document.getElementById('analog-second');
-  
+
   // Controls & Modals
   const formatToggleBtn = document.getElementById('format-toggle');
   const themeToggleBtn = document.getElementById('theme-toggle');
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const userBio = document.getElementById('user-bio');
   const userAvatar = document.getElementById('user-avatar');
   const changeAvatarBtn = document.getElementById('change-avatar-btn');
-  
+
   const nameModal = document.getElementById('name-modal');
   const nameInput = document.getElementById('name-input');
   const saveNameBtn = document.getElementById('save-name-btn');
@@ -67,12 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Live Clock Ticker
   function updateClock() {
     const now = new Date();
-    
+
     // Digital Time calculation
     let hours = now.getHours();
     const minutes = now.getMinutes();
     const seconds = now.getSeconds();
-    
+
     // Dynamic Greeting based on time of day
     if (hours >= 5 && hours < 12) {
       greetingText.textContent = 'Good Morning,';
@@ -178,8 +178,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function updateThemeIcon() {
-    themeToggleBtn.innerHTML = currentTheme === 'dark' 
-      ? '<i class="fa-solid fa-moon"></i>' 
+    themeToggleBtn.innerHTML = currentTheme === 'dark'
+      ? '<i class="fa-solid fa-moon"></i>'
       : '<i class="fa-solid fa-sun"></i>';
   }
 
@@ -232,7 +232,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Load Saved Profile Data
   function loadSavedProfile() {
     const savedName = localStorage.getItem('user_name');
-    if (savedName) displayName.textContent = savedName;
+    if (savedName && savedName !== 'Alex Morgan') {
+      displayName.textContent = savedName;
+    } else {
+      displayName.textContent = 'Agnes';
+      localStorage.setItem('user_name', 'Agnes');
+    }
 
     const savedTagline = localStorage.getItem('user_tagline');
     if (savedTagline) userTagline.textContent = savedTagline;
